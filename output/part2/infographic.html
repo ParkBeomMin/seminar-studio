@@ -1,0 +1,296 @@
+<title>프론티어 AI 네이티브 팀의 조건</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --ink:#16181d; --ink-2:#4a4f5a; --line:#e2e5ea;
+  --bg:#fbfbfc; --surface:#fff; --accent:#2f6df6; --accent-soft:#eaf0fe;
+  --radius:14px; --gap:24px;
+  --font:"Pretendard","Apple SD Gothic Neo",-apple-system,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#eef0f4; --ink-2:#a4aab6; --line:#2b303a;
+    --bg:#0f1115; --surface:#171a21; --accent:#7ea4ff; --accent-soft:#1a2440;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#eef0f4; --ink-2:#a4aab6; --line:#2b303a;
+  --bg:#0f1115; --surface:#171a21; --accent:#7ea4ff; --accent-soft:#1a2440;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.sheet{width:1200px;max-width:100%;margin:0 auto;padding:72px 56px 56px;background:var(--bg)}
+@media (max-width:1240px){.sheet{padding:48px 24px 40px}}
+
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.35}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:600}
+
+/* header */
+.head{border-bottom:2px solid var(--ink);padding-bottom:32px}
+.head h1{font-size:46px;font-weight:800;letter-spacing:-.02em;margin:14px 0 18px}
+.thesis{font-size:20px;color:var(--ink-2);max-width:44em}
+.thesis b{color:var(--ink);font-weight:700}
+.voices{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.voice{font-size:13px;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;
+  padding:4px 12px;background:var(--surface)}
+
+section{margin-top:56px}
+.shead{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+.shead h2{font-size:15px;font-family:var(--mono);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.shead .rule{flex:1;height:1px;background:var(--line)}
+
+/* diagram */
+figure{margin:0}
+.figwrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 24px 20px;overflow-x:auto}
+.figwrap svg{display:block;width:100%;min-width:820px;height:auto}
+figcaption{margin-top:14px;font-size:14px;color:var(--ink-2);max-width:56em}
+.d-box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.d-box-key{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.d-t{fill:var(--ink);font-size:15px;font-weight:600}
+.d-s{fill:var(--ink-2);font-size:13px}
+.d-lab{fill:var(--ink-2);font-size:12.5px;font-family:var(--mono)}
+.d-lab-key{fill:var(--accent);font-size:12.5px;font-family:var(--mono)}
+.d-line{stroke:var(--ink-2);stroke-width:1.5;fill:none}
+.d-line-key{stroke:var(--accent);stroke-width:2;fill:none}
+.d-dim{opacity:.55}
+.d-eyebrow{fill:var(--ink-2);font-size:12px;font-family:var(--mono);letter-spacing:.12em}
+
+/* blocks */
+.blocks{display:flex;flex-direction:column;gap:var(--gap)}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 32px;display:grid;grid-template-columns:300px 1fr;gap:32px}
+@media (max-width:900px){.block{grid-template-columns:1fr;gap:18px}}
+.block h3{font-size:24px;font-weight:750;letter-spacing:-.01em}
+.block .lead{font-size:14px;color:var(--ink-2);margin-top:10px}
+.pts{display:flex;flex-direction:column;gap:16px}
+.pt{font-size:16px}
+.pt .who{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;
+  display:block;margin-bottom:2px}
+.roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.roles span{font-size:13px;border:1px solid var(--line);border-radius:8px;padding:3px 10px;color:var(--ink-2)}
+
+/* numbers */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.tile .n{font-size:44px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+  line-height:1.15;color:var(--accent)}
+.tile .n small{font-size:20px;font-weight:700;margin-left:2px}
+.tile .cap{font-size:14px;color:var(--ink-2);margin-top:8px}
+.tile.dim .n{color:var(--ink-2)}
+
+/* quote */
+blockquote{margin:0;background:var(--accent-soft);border-radius:var(--radius);padding:36px 40px}
+blockquote p{font-size:28px;font-weight:700;letter-spacing:-.01em;line-height:1.5}
+blockquote cite{display:block;margin-top:16px;font-style:normal;font-size:14px;color:var(--ink-2)}
+
+/* actions */
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+@media (max-width:900px){.acts{grid-template-columns:1fr}}
+.act{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--radius);
+  background:var(--surface);padding:24px 28px}
+.act .who{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em}
+.act p{font-size:17px;margin-top:8px}
+
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+</style>
+
+<div class="sheet">
+
+  <header class="head">
+    <p class="eyebrow">AI Native Team</p>
+    <h1>프론티어 AI 네이티브 팀의 조건, 무엇이 다른가</h1>
+    <p class="thesis">AI 네이티브 팀은 도구 도입이 아니라 <b>포지션 경계를 없애는 짝작업</b>과
+      <b>리더의 선(先)전환</b>으로 만들어진다.</p>
+    <div class="voices"><span class="voice">배휘동</span><span class="voice">황현태</span><span class="voice">김승권</span></div>
+  </header>
+
+  <section>
+    <div class="shead"><h2>전환은 어디서 일어나는가</h2><div class="rule"></div></div>
+    <figure>
+      <div class="figwrap">
+        <svg viewBox="0 0 1120 660" role="img" aria-label="교육만으로는 조직이 원래 방식으로 돌아가고, 리더가 열어준 환경과 짝작업이 만나는 지점에서 전환이 시작된다는 것을 보여주는 다이어그램">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-2)"/>
+            </marker>
+            <marker id="ark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+            </marker>
+          </defs>
+
+          <!-- lane A -->
+          <text class="d-eyebrow" x="0" y="16">대부분 실패한 길</text>
+          <g class="d-dim">
+            <rect class="d-box" x="0" y="36" width="252" height="76" rx="10"/>
+            <text class="d-t" x="126" y="68" text-anchor="middle">잘하는 소수가 주도하는</text>
+            <text class="d-t" x="126" y="90" text-anchor="middle">전사 세미나·교육</text>
+
+            <line class="d-line" x1="252" y1="74" x2="330" y2="74" marker-end="url(#ar)" stroke-dasharray="5 4"/>
+            <text class="d-lab" x="291" y="62" text-anchor="middle">행사 종료</text>
+
+            <rect class="d-box" x="340" y="36" width="230" height="76" rx="10"/>
+            <text class="d-t" x="455" y="68" text-anchor="middle">각자 자리로</text>
+            <text class="d-t" x="455" y="90" text-anchor="middle">돌아간다</text>
+
+            <line class="d-line" x1="570" y1="74" x2="648" y2="74" marker-end="url(#ar)" stroke-dasharray="5 4"/>
+
+            <circle cx="690" cy="74" r="18" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
+            <line class="d-line" x1="678" y1="62" x2="702" y2="86"/>
+            <text class="d-t" x="722" y="80">원래 하던 방식 그대로</text>
+          </g>
+
+          <line x1="0" y1="152" x2="1120" y2="152" stroke="var(--line)" stroke-width="1"/>
+
+          <!-- lane B -->
+          <text class="d-eyebrow" x="0" y="186">실제로 조직을 바꾼 길</text>
+
+          <rect class="d-box" x="330" y="206" width="420" height="80" rx="10"/>
+          <text class="d-t" x="540" y="238" text-anchor="middle">리더가 먼저 AI 네이티브가 된다</text>
+          <text class="d-s" x="540" y="262" text-anchor="middle">자기 업무를 먼저 전부 옮긴다 — 꼭지점 AX</text>
+
+          <line class="d-line-key" x1="540" y1="286" x2="540" y2="348" marker-end="url(#ark)"/>
+          <text class="d-lab-key" x="556" y="322">시간(월 1일)·보안 해제·비용을 연다</text>
+
+          <rect class="d-box-key" x="300" y="352" width="480" height="102" rx="12"/>
+          <text class="d-t" x="540" y="392" text-anchor="middle" font-size="20">두 힘이 만나는 지점에서 전환이 시작된다</text>
+          <text class="d-s" x="540" y="422" text-anchor="middle">둘 중 하나만으로는 움직이지 않는다</text>
+
+          <line class="d-line-key" x1="540" y1="560" x2="540" y2="458" marker-end="url(#ark)"/>
+          <text class="d-lab-key" x="556" y="512">옆에서 지켜보며 얻는 효능감</text>
+
+          <rect class="d-box" x="0" y="560" width="250" height="80" rx="10"/>
+          <text class="d-t" x="125" y="592" text-anchor="middle">리터러시가 높은 사람과</text>
+          <text class="d-t" x="125" y="614" text-anchor="middle">낮은 사람을 한 짝으로</text>
+
+          <line class="d-line" x1="250" y1="600" x2="408" y2="600" marker-end="url(#ar)"/>
+          <text class="d-lab" x="329" y="588" text-anchor="middle">월 1회</text>
+
+          <rect class="d-box" x="418" y="560" width="244" height="80" rx="10"/>
+          <text class="d-t" x="540" y="592" text-anchor="middle">하루를 통째로 써서</text>
+          <text class="d-t" x="540" y="614" text-anchor="middle">각자의 실제 문제를 푼다</text>
+
+          <!-- outcomes -->
+          <line class="d-line-key" x1="780" y1="403" x2="836" y2="403"/>
+          <line class="d-line-key" x1="836" y1="342" x2="836" y2="464"/>
+          <line class="d-line-key" x1="836" y1="342" x2="880" y2="342" marker-end="url(#ark)"/>
+          <line class="d-line-key" x1="836" y1="464" x2="880" y2="464" marker-end="url(#ark)"/>
+
+          <rect class="d-box" x="890" y="310" width="230" height="64" rx="10"/>
+          <text class="d-t" x="1005" y="336" text-anchor="middle">두 번 만에</text>
+          <text class="d-t" x="1005" y="358" text-anchor="middle">조직이 체감한다</text>
+
+          <rect class="d-box" x="890" y="432" width="230" height="64" rx="10"/>
+          <text class="d-t" x="1005" y="458" text-anchor="middle">포지션 구분이</text>
+          <text class="d-t" x="1005" y="480" text-anchor="middle">사라진 팀</text>
+        </svg>
+      </div>
+      <figcaption>잘하는 소수가 끌고 간 교육은 행사가 끝나면 조직을 제자리로 돌려놓는다. 리더가 위에서 시간·보안·비용을 열고, 아래에서 짝작업이 올라와 둘이 만나는 지점에서만 전환이 시작된다.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="shead"><h2>무엇이 다른가</h2><div class="rule"></div></div>
+    <div class="blocks">
+
+      <article class="block">
+        <div>
+          <h3>포지션 구분이 없다</h3>
+          <p class="lead">직군이 아니라 역할이 남는다.</p>
+        </div>
+        <div class="pts">
+          <p class="pt"><span class="who">황현태</span>세일즈 매니저 한 명이 리드 발굴부터 딜 클로징, 아웃바운드·인바운드 세일즈, CS, 개발, 마케팅 소재 제작까지 멀티태스킹으로 처리한다.</p>
+          <p class="pt"><span class="who">배휘동</span>마케팅 담당자도 오퍼레이션 리드도 직접 개발한다. ‘비개발자’라는 말 자체가 성립하기 어려워졌다.</p>
+          <p class="pt"><span class="who">배휘동</span>직업의 원형이 직군에서 역할로 옮겨간다. 거의 모두가 프로토타이퍼·빌더가 되고, 인프라와 비용 효율을 아는 메인테이너가 플랫폼을 맡아 나머지를 지원하는 형태가 효과적이다.
+            <span class="roles"><span>빌더</span><span>그로워</span><span>스위퍼</span><span>메인테이너</span><span>프로토타이퍼</span></span>
+            <span class="who" style="margin-top:6px">클로드 코드 메인 개발자가 제시한 분류</span></p>
+        </div>
+      </article>
+
+      <article class="block">
+        <div>
+          <h3>교육이 아니라 짝작업으로 바꾼다</h3>
+          <p class="lead">개인의 변화를 조직이 설계해 돕는다.</p>
+        </div>
+        <div class="pts">
+          <p class="pt"><span class="who">배휘동</span>잘하는 몇 명이 주도한 세미나·교육은 대부분 실패했다. 리터러시가 높은 사람과 낮은 사람을 짝지어 하루를 통째로 쓰게 하자 조직이 실제로 움직였다.</p>
+          <p class="pt"><span class="who">배휘동</span>월 1회, 보안·비용 절감처럼 테마를 바꿔가며 각자 자기 조직과 개인의 문제를 짝으로 해결하게 한다. 옆에서 지켜본 사람이 효능감과 자신감을 얻는다.</p>
+          <p class="pt"><span class="who">황현태</span>AI 없이는 처리할 수 없는 양의 일을 몇 달간 매일 준다. 정해진 시간에는 다른 창을 모두 닫고 에이전트 하나만 쓰게 하는 반강제 장치를 함께 둔다.</p>
+        </div>
+      </article>
+
+      <article class="block">
+        <div>
+          <h3>위에서 열고, 아래에서 키운다</h3>
+          <p class="lead">둘 중 하나만으로는 시작되지 않는다.</p>
+        </div>
+        <div class="pts">
+          <p class="pt"><span class="who">황현태</span>첫 단추는 꼭지점 AX다. 임원일수록 더 큰 잣대를 들이대고, 리더가 자기 업무를 전부 AI로 수행하는 단계를 먼저 통과해야 한다.</p>
+          <p class="pt"><span class="who">배휘동</span>명시적 리더가 아니어도 주변에 좋은 영향을 주는 사람을 AX 챔피언으로 키운다. 다만 커리어업 지원도 없고 보안으로 다 막혀 있으면 아무것도 못 한다 — C레벨이 시간·보안·비용을 함께 결정해야 한다. 전사 일괄보다 임팩트가 큰 곳부터 퍼뜨리는 편이 낫다.</p>
+          <p class="pt"><span class="who">황현태</span>큰 조직은 애초에 AI가 없는 전제로 설계됐다. 업무 자동화 몇 개로는 변하지 않으며, 직급마다 자신을 인핸싱할 지점 — 임원이라면 의사결정 최적화 — 에 집중해야 한다.</p>
+        </div>
+      </article>
+
+      <article class="block">
+        <div>
+          <h3>가장 흔한 오해 둘</h3>
+          <p class="lead">둘 다 방향을 반대로 잡게 만든다.</p>
+        </div>
+        <div class="pts">
+          <p class="pt"><span class="who">황현태</span>업무마다 전용 에이전트를 다 만들어야 한다는 생각. 이미 일할 수 있는 범용 에이전트가 그 일을 하게 만들면 된다. 에이전트가 쌓이면 인지도 관리도 안 되고 결국 에이전트 자체에 대한 반감만 남는다.</p>
+          <p class="pt"><span class="who">배휘동</span>코딩 비용이 제로가 됐다는 말을 코딩 지식이 필요 없다는 뜻으로 착각하는 것. 개인용 작은 도구는 그렇지만, 팀·회사·외부 고객이 돈 내고 쓰는 제품을 만들려면 비용 관리·보안·인프라 설계와 인터페이스 지식이 오히려 더 중요해졌다.</p>
+        </div>
+      </article>
+
+      <article class="block">
+        <div>
+          <h3>평가는 토큰이 아니라 원래의 지표로</h3>
+          <p class="lead">무엇을 세느냐가 무엇을 하게 만든다.</p>
+        </div>
+        <div class="pts">
+          <p class="pt"><span class="who">배휘동</span>토큰 사용량 기준은 처음 쓰는 사람을 끌어들이는 초기 유도에는 쓸모가 있지만, 월급을 결정하는 기준으로는 나쁘다.</p>
+          <p class="pt"><span class="who">배휘동</span>개발이라면 피처 리드 타임 단축이나 핫픽스 감소처럼, 원래 평가했어야 할 지표가 AI 도입 이후 얼마나 개선됐는지를 본다.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><h2>숫자로 남은 것</h2><div class="rule"></div></div>
+    <div class="tiles">
+      <div class="tile"><p class="n">2<small>회</small></p><p class="cap">짝작업 행사를 두 번 치르자 조직의 리터러시 전환이 체감됐다</p></div>
+      <div class="tile"><p class="n">8<small>회</small></p><p class="cap">월 1회로 쌓은 짝작업 행사의 누적 횟수</p></div>
+      <div class="tile"><p class="n">5–6<small>개월</small></p><p class="cap">AI 없이는 불가능한 업무량을 지속해서 부여한 훈련 기간</p></div>
+      <div class="tile dim"><p class="n">150–400<small>개</small></p><p class="cap">엔터프라이즈가 만들어야 한다고 믿는 전용 에이전트 수. 만들어야 할 목표가 아니라 오해로 지목된 숫자다</p></div>
+    </div>
+  </section>
+
+  <section>
+    <blockquote>
+      <p>“저는 꼭지점 AX라고 말을 많이 하는데 리더가 먼저 AI 네이티브가 돼야 돼요”</p>
+      <cite>황현태</cite>
+    </blockquote>
+  </section>
+
+  <section>
+    <div class="shead"><h2>내일 할 한 가지</h2><div class="rule"></div></div>
+    <div class="acts">
+      <div class="act"><span class="who">황현태</span><p>일어나서 잠들 때까지 에이전트 하나만 바라보고, 모든 일과 모든 소통을 그 안에서 수행한다.</p></div>
+      <div class="act"><span class="who">배휘동</span><p>상위 요금제를 열어 토큰 리밋이 걸릴 때까지 써본다.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>프론티어 AI 네이티브 팀의 조건, 무엇이 다른가</span>
+    <span>배휘동 · 황현태 · 김승권</span>
+  </footer>
+
+</div>

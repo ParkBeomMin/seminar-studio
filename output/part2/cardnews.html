@@ -1,0 +1,131 @@
+<title>AI 네이티브 팀의 조건</title>
+<style>
+:root{
+  --ink:#16181d; --ink-2:#4a4f5a; --line:#e2e5ea;
+  --bg:#fbfbfc; --surface:#fff; --accent:#2f6df6; --accent-soft:#eaf0fe;
+  --radius:14px; --gap:24px;
+  --font:"Pretendard","Apple SD Gothic Neo",-apple-system,system-ui,sans-serif;
+  --cw:520;
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#f2f3f5; --ink-2:#a8aebb; --line:#2b2f37;
+    --bg:#0f1114; --surface:#171a1f; --accent:#6a9bff; --accent-soft:#1b2740;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#f2f3f5; --ink-2:#a8aebb; --line:#2b2f37;
+  --bg:#0f1114; --surface:#171a1f; --accent:#6a9bff; --accent-soft:#1b2740;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;padding:40px 24px 72px}
+.deck{display:flex;flex-wrap:wrap;gap:32px;justify-content:center;max-width:1200px;margin:0 auto}
+.frame{width:calc(var(--cw) * 1px);height:calc(var(--cw) * 1.25px);overflow:hidden;
+  border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.10),0 12px 32px rgba(0,0,0,.08)}
+.card{width:1080px;height:1350px;transform:scale(calc(var(--cw) / 1080));transform-origin:top left;
+  background:var(--surface);color:var(--ink);padding:96px 88px;display:flex;flex-direction:column;
+  line-height:1.7;word-break:keep-all;position:relative}
+.card::after{content:"";position:absolute;inset:auto 0 0 0;height:10px;background:var(--accent)}
+.eyebrow{font-size:27px;font-weight:700;letter-spacing:.04em;color:var(--accent)}
+.num{margin-left:auto;font-size:27px;font-weight:700;color:var(--ink-2)}
+.top{display:flex;align-items:center;gap:16px;padding-bottom:36px;border-bottom:2px solid var(--line)}
+h1{font-size:82px;line-height:1.28;font-weight:800;margin:0;letter-spacing:-.02em}
+h2{font-size:62px;line-height:1.32;font-weight:800;margin:0;letter-spacing:-.02em}
+.body{font-size:35px;color:var(--ink);margin:36px 0 0}
+.cap{font-size:26px;color:var(--ink-2);margin:0;padding-top:28px;border-top:1px solid var(--line)}
+.spacer{flex:1;min-height:40px}
+.lead{font-size:38px;color:var(--ink-2);margin:40px 0 0}
+.mark{background:var(--accent-soft);color:var(--accent);padding:0 .18em;border-radius:6px}
+.quote{font-size:58px;line-height:1.5;font-weight:700;letter-spacing:-.015em;margin:0}
+.quote::before{content:"“";display:block;font-size:130px;line-height:.8;color:var(--accent);margin-bottom:12px}
+.by{font-size:30px;color:var(--ink-2);margin:36px 0 0;font-weight:600}
+ol{margin:44px 0 0;padding:0;list-style:none;counter-reset:s}
+ol li{counter-increment:s;font-size:37px;font-weight:600;padding:26px 0 26px 74px;position:relative;border-top:1px solid var(--line)}
+ol li:first-child{border-top:0}
+ol li::before{content:counter(s);position:absolute;left:0;top:26px;width:50px;height:50px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);font-size:26px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.speakers{font-size:28px;color:var(--ink-2);margin:0;padding-top:28px;border-top:1px solid var(--line)}
+</style>
+
+<div class="deck">
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">AI NATIVE TEAM</span><span class="num">01</span></div>
+  <p class="lead">프론티어 팀은</p>
+  <h1>무엇이<br>다른가</h1>
+  <p class="body">도구를 도입해서 AI 네이티브 팀이 되는 것이 아니다. 포지션의 경계를 없애는 짝작업과, 리더가 먼저 바뀌는 순서가 만든다.</p>
+  <div class="spacer"></div>
+  <p class="speakers">배휘동 · 황현태</p>
+</div></div>
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">문제</span><span class="num">02</span></div>
+  <h2>교육으로는<br>바뀌지 않았다</h2>
+  <p class="body">잘하는 소수가 주도한 세미나와 교육은 대부분 실패했다. 배운 사람들은 자리로 돌아가 원래 하던 방식 그대로 일했다.</p>
+  <div class="spacer"></div>
+  <p class="cap">개인이 바뀌기를 기다리는 대신, 조직이 그 변화를 도와야 한다. — 배휘동</p>
+</div></div>
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">전환의 방법</span><span class="num">03</span></div>
+  <h2>짝을 지어<br>하루를 통째로</h2>
+  <p class="body">리터러시가 높은 사람과 낮은 사람을 짝지어, 하루 종일 각자의 문제를 직접 만들어 풀게 한다. 옆에서 지켜보며 얻은 효능감이 전환을 만든다.</p>
+  <div class="spacer"></div>
+  <p class="cap">월 1회 열리는 <span class="mark">AX데이</span>. 보안·비용 절감처럼 테마를 바꿔가며 반복했고, 두 번 만에 조직의 리터러시가 올라갔다. — 배휘동</p>
+</div></div>
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">팀의 모양</span><span class="num">04</span></div>
+  <h2>포지션 구분이<br>없다</h2>
+  <p class="body">세일즈 매니저 한 명이 리드 발굴과 딜 클로징, 보고서, CS, 개발, 마케팅 소재 제작까지 한다. ‘비개발자’라는 말 자체가 성립하기 어려워졌다.</p>
+  <div class="spacer"></div>
+  <p class="cap">마케팅 담당자도 오퍼레이션 리드도 직접 개발한다. — 황현태 · 배휘동</p>
+</div></div>
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">가장 큰 오해</span><span class="num">05</span></div>
+  <h2>에이전트를 쌓으면<br>부채가 된다</h2>
+  <p class="body">업무마다 전용 에이전트를 만들 이유가 없다. 이미 일할 수 있는 범용 에이전트가 그 일을 하게 만들면 된다.</p>
+  <div class="spacer"></div>
+  <p class="cap">엔터프라이즈 대부분이 150~400개를 만들어야 한다고 믿는다. 그렇게 쌓인 에이전트는 인지도 관리도 되지 않고 결국 반감만 남는다. — 황현태</p>
+</div></div>
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">또 하나의 오해</span><span class="num">06</span></div>
+  <h2>개발 지식은<br>더 중요해졌다</h2>
+  <p class="body">개인이 쓸 작은 도구에는 코딩 지식이 정말 필요 없어졌다. 그러나 팀과 회사, 돈을 내는 고객이 쓰는 제품은 다르다.</p>
+  <div class="spacer"></div>
+  <p class="cap">비용 관리와 보안, 인프라 설계, 운영 효율, 인터페이스 설계를 아는 사람이 산재한 제품들 사이에서 돋보인다. — 배휘동</p>
+</div></div>
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">평가</span><span class="num">07</span></div>
+  <h2>토큰 사용량은<br>기준이 아니다</h2>
+  <p class="body">처음 쓰게 만드는 유도 효과는 있지만, 월급을 결정하는 기준으로는 나쁘다. 원래 평가했어야 할 지표가 얼마나 개선됐는지를 보면 된다.</p>
+  <div class="spacer"></div>
+  <p class="cap">개발이라면 피처 리드 타임이 줄었는지, 핫픽스가 줄었는지. — 배휘동</p>
+</div></div>
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">첫 단추</span><span class="num">08</span></div>
+  <p class="quote">저는 꼭지점 AX라고 말을 많이 하는데 리더가 먼저 AI 네이티브가 돼야 돼요</p>
+  <p class="by">— 황현태</p>
+  <div class="spacer"></div>
+  <p class="cap">동시에 C레벨이 시간과 보안, 비용을 열어줘야 바텀업의 챔피언이 움직일 수 있다. — 배휘동</p>
+</div></div>
+
+<div class="frame"><div class="card">
+  <div class="top"><span class="eyebrow">정리</span><span class="num">09</span></div>
+  <h2>무엇을<br>먼저 하는가</h2>
+  <ol>
+    <li>교육 말고 짝작업으로 바꾼다</li>
+    <li>포지션의 경계를 지운다</li>
+    <li>전용 에이전트를 만들지 않는다</li>
+    <li>리더가 먼저 전환한다</li>
+  </ol>
+  <div class="spacer"></div>
+  <p class="speakers">배휘동 · 황현태</p>
+</div></div>
+
+</div>

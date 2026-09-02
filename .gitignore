@@ -1,0 +1,15 @@
+# 파이썬 환경 — uv로 재생성
+.venv/
+__pycache__/
+
+# 입력 녹음 (대용량 바이너리)
+input/*
+!input/.gitkeep
+
+# 중간 산출물 — 전사본 전문과 코어는 원문에 가까워 공개하지 않는다
+_workspace/
+
+# 이전 버전 산출물
+output_v?/
+
+.DS_Store
