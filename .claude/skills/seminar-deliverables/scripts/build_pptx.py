@@ -16,15 +16,35 @@ spec 스키마:
 }
 layout 미지정 시 bullets. 알 수 없는 layout은 bullets로 처리하고 stderr에 경고.
 """
-import argparse, json, sys
+import argparse, json, os, sys
 from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.oxml.ns import qn
 
 INK, INK2, ACCENT, BG = RGBColor(0x16,0x18,0x1D), RGBColor(0x4A,0x4F,0x5A), RGBColor(0x2F,0x6D,0xF6), RGBColor(0xFB,0xFB,0xFC)
-FONT = "Pretendard"
+# python-pptx는 CSS 같은 폰트 폴백 체인을 못 쓴다 — 한 이름만 박힌다.
+# Pretendard는 설치돼 있지 않은 기기가 많고, 없으면 뷰어가 명조로 폴백해 덱이 딴판이 된다.
+# macOS 기본 탑재이며 Office 한글 문서에서 널리 쓰이는 이름을 기본값으로 둔다.
+FONT = os.environ.get("DECK_FONT", "Apple SD Gothic Neo")
 W, H = Inches(13.333), Inches(7.5)
+
+
+def _font(run, size, color, bold=False):
+    """python-pptx의 run.font.name은 <a:latin>만 설정한다. 한글은 <a:ea>(East Asian)
+    타이프페이스를 따르므로, 그것을 안 건드리면 한글만 테마 기본 명조로 폴백한다.
+    라틴만 맞고 한글이 딴 폰트로 나오는 사고가 여기서 난다. 둘 다 박는다."""
+    f = run.font
+    f.size, f.bold, f.name = Pt(size), bold, FONT
+    f.color.rgb = color
+    rPr = run._r.get_or_add_rPr()
+    for tag in ('a:ea', 'a:cs'):
+        el = rPr.find(qn(tag))
+        if el is None:
+            el = rPr.makeelement(qn(tag), {})
+            rPr.append(el)
+        el.set('typeface', FONT)
 
 
 def _blank(prs):
@@ -42,8 +62,7 @@ def _text(slide, x, y, w, h, size, color, bold=False, align=PP_ALIGN.LEFT):
     p = tf.paragraphs[0]
     p.alignment = align
     r = p.add_run()
-    r.font.size, r.font.bold, r.font.name = Pt(size), bold, FONT
-    r.font.color.rgb = color
+    _font(r, size, color, bold)
     return tf, r
 
 
@@ -86,7 +105,7 @@ def bullets(prs, sl):
             p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
             p.space_after = Pt(14)
             r = p.add_run(); r.text = "· " + str(b)
-            r.font.size, r.font.name, r.font.color.rgb = Pt(19), FONT, INK2
+            _font(r, 19, INK2)
     _notes(s, sl.get("notes"))
 
 

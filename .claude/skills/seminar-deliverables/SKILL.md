@@ -199,6 +199,11 @@ node .claude/skills/seminar-deliverables/scripts/check_cards.mjs output/<part>/c
 | 불릿 | 최대 4개, 각 20자 내외. 문장을 통째로 넣지 마라 |
 | 소스 | `sections`를 슬라이드 그룹으로, `claims` weight 1~2를 본문으로 |
 
+- **폰트를 바꿀 때는 `<a:ea>`까지 바꿔야 한다.** python-pptx의 `run.font.name`은 `<a:latin>`만
+  설정하고, 한글은 `<a:ea>`(East Asian) 타이프페이스를 따른다. 이걸 놓치면 라틴 문자만 지정
+  폰트로 나오고 **한글은 테마 기본 명조로 폴백해** 덱이 딴판이 된다. 번들 빌더의 `_font()`가
+  latin·ea·cs 셋을 함께 박으니 그걸 거쳐 쓴다. 폰트 이름은 `DECK_FONT` 환경변수로 바꾼다
+  (기본값 `Apple SD Gothic Neo` — 설치돼 있지 않은 기기가 많은 이름을 기본값으로 두면 안 된다)
 - 발표자 노트(`notes`)에는 **그 슬라이드에서 말할 내용**을 넣는다. 근거·맥락·예시를 문장으로.
   타임코드나 코어의 id(`c12` 등)를 노트에 남기지 마라 — 그것도 배관이다
 - python-pptx 실패 시 **에러 원문을 그대로 보고한다.** 빈 pptx를 만들어 성공으로 보고하지 않는다

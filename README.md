@@ -11,14 +11,47 @@ input/talk.m4a  →  전사  →  코어 분석  →  팩트체크  →  ┬ par
 
 ## 결과물 보기
 
-`output/`에 실제 산출물이 들어 있다 — 47분짜리 세미나 녹음 하나로 만든 8개 파일.
+47분짜리 세미나 녹음 하나로 만든 8개 파일이 `output/`에 들어 있다.
+녹음에 두 세션(단독 발표 + 패널)이 들어 있어 파트가 둘로 나뉘었다.
 
-| | part1 | part2 |
-|---|---|---|
-| 요약 | [summary.md](output/part1/summary.md) | [summary.md](output/part2/summary.md) |
-| 카드뉴스 | [cardnews.html](output/part1/cardnews.html) | [cardnews.html](output/part2/cardnews.html) |
-| 인포그래픽 | [infographic.html](output/part1/infographic.html) | [infographic.html](output/part2/infographic.html) |
-| 발표덱 | [deck.pptx](output/part1/deck.pptx) (17장) | [deck.pptx](output/part2/deck.pptx) (18장) |
+### 카드뉴스 — 1080×1350, 장당 한 생각
+
+<img src="docs/cardnews-part1.png" width="100%" alt="카드뉴스 미리보기">
+
+[part1 전체](output/part1/cardnews.html) · [part2 전체](output/part2/cardnews.html)
+
+<details>
+<summary>part2 카드뉴스 보기</summary>
+
+<img src="docs/cardnews-part2.png" width="100%" alt="part2 카드뉴스 미리보기">
+
+</details>
+
+### 인포그래픽 — 강의 구조가 아니라 내용의 구조
+
+<img src="docs/infographic-part1.png" width="100%" alt="인포그래픽 상단">
+
+목차나 타임라인이 아니라 **개념 다이어그램**이 중심이다.
+위는 상단 일부 — [part1 전체](output/part1/infographic.html) · [part2 전체](output/part2/infographic.html)
+
+<details>
+<summary>part2 인포그래픽 보기</summary>
+
+<img src="docs/infographic-part2.png" width="100%" alt="part2 인포그래픽 상단">
+
+</details>
+
+### 발표덱 — 진짜 .pptx
+
+| part1 (17장) | part2 (18장) |
+|---|---|
+| <img src="docs/deck-part1.png" width="100%" alt="part1 덱 표지"> | <img src="docs/deck-part2.png" width="100%" alt="part2 덱 표지"> |
+
+[part1 다운로드](output/part1/deck.pptx) · [part2 다운로드](output/part2/deck.pptx)
+
+### 요약
+
+[part1](output/part1/summary.md) · [part2](output/part2/summary.md) — A4 2~3장, GitHub에서 바로 읽힌다
 
 ## 설계에서 중요한 것 세 가지
 
@@ -82,6 +115,9 @@ workflows/          seminar.workflow.mjs   ← 순서·병렬·루프·스키마
 두 번째 것이 실전에서 값을 했다. `transform:scale(calc(var(--cw)/1080))`에서 `--cw`가 `540px`이면
 `scale()`에 길이가 들어가 **transform이 통째로 무시되고** 카드가 원본 크기로 렌더돼 잘린다.
 에러도 경고도 안 나고, 내용량 점검으로는 절대 안 잡힌다. 이제 게이트가 잡는다.
+
+덱 쪽에도 같은 종류의 함정이 있었다. python-pptx의 `run.font.name`은 `<a:latin>`만 설정해서
+**한글은 테마 기본 명조로 폴백한다.** `<a:ea>`까지 박아야 지정한 고딕으로 나온다.
 
 ## 산출물에 대한 원칙
 
